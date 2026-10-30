@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: sistema-pedidos
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:55432/pedidos}
+    username: ${DB_USERNAME:pedidos}
+    password: ${DB_PASSWORD:pedidos}
+    hikari:
+      maximum-pool-size: ${DB_POOL_MAX:10}
+      minimum-idle: ${DB_POOL_MIN:2}
+      connection-timeout: ${DB_CONNECTION_TIMEOUT_MS:3000}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics
+  endpoint:
+    health:
+      probes:
+        enabled: true
+server:
+  error:
+    include-message: never
