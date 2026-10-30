@@ -1,0 +1,12 @@
+package org.example.pedidos.api;
+
+import java.util.List;
+
+public record PaginaResponse<T>(
+        List<T> conteudo,
+        int pagina,
+        int tamanho,
+        long totalElementos,
+        int totalPaginas
+) {
+}
